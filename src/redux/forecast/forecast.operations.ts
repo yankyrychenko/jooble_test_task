@@ -2,13 +2,14 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5";
+const REACT_APP_OPEN_WEATHER_API_KEY = "380f6aeddfee623e5ad4264901234639";
 
 export const getCurrentForecast = createAsyncThunk(
   "forecast/current",
   async (city: string) => {
     try {
       const response = await axios.get(
-        `/weather?q=${city}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
+        `/weather?q=${city}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
       );
       return response.data;
     } catch (error) {
@@ -22,7 +23,7 @@ export const getExtendedForecast = createAsyncThunk(
   async (city: string) => {
     try {
       const response = await axios.get(
-        `/forecast?q=${city}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
+        `/forecast?q=${city}&appid=${REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
       );
 
       return response.data;
