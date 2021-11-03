@@ -1,0 +1,1 @@
+export { ExtendedForecast } from "./ExtendedForecast";
